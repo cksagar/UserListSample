@@ -52,7 +52,7 @@ export class AppComponent {
   // calculate progressbar value.
   progressHandler(count: number) {
     if (this.progressValue < 100)
-      this.progressValue = count * 2;   // multiplying by 2 to simply increase the progress more.
+      this.progressValue = count * 10;   // multiplying by 10 to simply increase the progress more.
     else
       this.addUserBtn.nativeElement.disabled = true;  // desabling add user btn after progress reach to 100.
   }
