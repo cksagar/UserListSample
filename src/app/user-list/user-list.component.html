@@ -1,0 +1,21 @@
+<div class="container" *ngIf="users">
+    <table class="table table-striped">
+        <tr>
+            <th>Name</th>
+            <th>Date Of Birth</th>
+            <th>Gender</th>
+            <th>Languages</th>
+        </tr>
+        <tr *ngFor="let user of users">
+            <td>{{user.name}}</td>
+            <td>{{user.dob | date:'mediumDate' }}</td>
+            <td>
+                <div class="col-md-3">{{user.gender}} </div>
+            </td>
+            <td>
+                <div *ngFor="let i of user.lang">
+                    {{i}}
+                </div>
+            </td>
+    </table>
+</div>

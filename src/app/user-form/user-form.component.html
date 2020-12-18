@@ -1,0 +1,71 @@
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <form [formGroup]="userForm" (ngSubmit)="submitForm()">
+
+                    <div class="form-group">
+                        <div>
+                            <label for="name">Name:</label>
+                        </div>
+                        <input id="name" formControlName="name" maxlength="20" type="text" class="form-control">
+                        <div *ngIf="userForm.get('name').touched && userForm.get('name').invalid"
+                            class="alert alert-danger">
+                            <div *ngIf="name.errors.required">
+                                name is required.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div>
+                            <label for="dob">Date Of Birth:</label>
+                        </div>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Choose a Date</mat-label>
+                            <input matInput formControlName="dob" [max]="tomorrow" [matDatepicker]="picker">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="gender">Gender:</label>
+                        <div>
+                            <input id="male" type="radio" checked value="male" name="gender" formControlName="gender">
+                            <label for="male"> Male</label>
+                        </div>
+
+                        <div>
+                            <input id="female" type="radio" value="female" name="gender" formControlName="gender">
+                            <label for="female"> Female</label>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div>
+                            <label for="lang">Languages:</label>
+                        </div>
+                        <select multiple formControlName="lang" class="form-control">
+                            <option *ngFor="let lang of langArr">{{lang}}</option>
+                        </select>
+                        <div *ngIf="lang.touched && lang.invalid" class="alert alert-danger">
+                            <div *ngIf="lang.errors.required">Select atleast 1 Language</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div>
+                            <label for="about">About:</label>
+                        </div>
+                        <div>
+                            <textarea formControlName="about" cols="50" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" [disabled]="!userForm.valid" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
